@@ -1,0 +1,145 @@
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+//import MenuIcon from '@mui/icons-material/Menu';
+import logo from '../assets/red1.png';
+import '../App.css';
+import { Badge, Paper } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+
+const options = [
+  'Concretos',
+  'Cementos',
+  'Grava',
+  'Polvo',
+];
+
+/* const useStyles = makeStyles((theme)=> ({
+    root:{flexGrow:1, marginBotto,:"7rem",},
+    appBar:{backgroundColor:"whitesmoke", boxShadow:"none",},
+    grow:{flexGrow:1,},
+    button:{marginLeft:theme.spacing(2),},
+    image:{marginRight:"10px", height:"1rem"},
+
+})) */
+
+export default function Navbar() {
+    /*const classes = useStyles(); 
+
+    <IconButton edge= "start" className={classes.menuButton} color="inherit" aria-label="menu"
+    <img src={logo} className={classes.image}/>
+    */
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="small"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+           <img src={logo}/>   
+           </IconButton>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            Madeza
+          </Typography>
+        
+          
+          <SimpleListMenu/>;
+      
+      
+          <div>
+          <Button variant='outlined' color="inherit">Login</Button>
+          </div>
+          <div>
+          <Typography variant="h7" component="div" color="whitesmoke" sx={{ flexGrow: 1 }}>
+          &#160;Hello Gest&#160;   
+          </Typography>
+          </div>
+          
+          <IconButton>
+          <Badge badgeContent={20} color="secondary">
+          <ShoppingCartIcon fontSize="large"/>
+          </Badge>
+          </IconButton>
+          
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
+
+function SimpleListMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const open = Boolean(anchorEl);
+  const handleClickListItem = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <List
+        component="nav"
+        aria-label="Device settings"
+        sx={{ bgcolor: '#f3f3f7' }}
+      >
+        <ListItem
+          button
+          id="lock-button"
+          aria-haspopup="listbox"
+          aria-controls="lock-menu"
+          aria-label=""
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClickListItem}
+        >
+          <ListItemText
+            primary=""
+            secondary={options[selectedIndex]}
+          />
+        </ListItem>
+      </List>
+      <Menu
+        id="lock-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'lock-button',
+          role: 'listbox',
+        }}
+      >
+        {options.map((option, index) => (
+          <MenuItem
+            key={option}
+            disabled={index === 0}
+            selected={index === selectedIndex}
+            onClick={(event) => handleMenuItemClick(event, index)}
+          >
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
+  );
+}

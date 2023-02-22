@@ -1,0 +1,25 @@
+.counter-prd{
+    width: fit-content;
+    background-color: rgb(255, 254, 249);
+    margin:auto;
+    padding: auto;
+    text-align: center;
+    display:flex;
+    object-fit: contain !important;
+    
+ 
+}
+.inputnum{
+   
+        background-color: #FFF3E0;
+        border: 1px solid #002652;
+        font-family: inherit;
+        font-size: 100%;
+        border-radius: 5% 5% 5% 5%;
+        width : 79%;
+        text-align: center;
+        float:inherit;
+        font-weight:bold;
+
+  
+}

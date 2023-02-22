@@ -1,0 +1,33 @@
+.tt-adrr-nvio{
+   text-align: center;
+}
+.container-addr-nvio-prd{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(245, 248, 248);
+    display: flex;
+  
+}
+
+.addr-nvio-prd{
+    width: 60%;
+    background-color: rgb(244, 243, 245);
+    
+  
+}
+.acrd-gg-nvio{
+ /*ASIGANOS DISPLAY FLEX*/
+ display: flex;
+ /*DIRECCION EN COLUMNA*/
+ flex-direction: column;
+ /*CENTRAMOS EN EJE X*/
+ align-items: center;
+ /*CENTRAMOS EN EJE Y*/
+ justify-content: center;
+ width: 100%;
+ height: 500px;
+ background-color: grey;
+    
+}
+

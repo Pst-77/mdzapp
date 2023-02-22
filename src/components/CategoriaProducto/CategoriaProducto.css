@@ -1,0 +1,28 @@
+.container-cgt-prd{
+    display: flex; 
+}
+
+
+.ctg-filtro-prd{
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    padding: 2%;
+    padding: 2%;
+}
+
+
+.ctg-grd-prd{
+    width: 75%;
+    background-color: #ffffff00;
+    padding: 1%;
+ 
+}
+htm, body .container-cgt-prd{
+    height:100%;
+
+}
+
+.tt-grd-prd{
+    text-align: center;
+    align-items: center;
+}
