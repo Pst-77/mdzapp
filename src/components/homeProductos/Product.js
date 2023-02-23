@@ -44,30 +44,16 @@ export default function Product(props) {
     setExpanded(!expanded);
   };
 
-  const product = _products.map((item) => ( 
-    <Product 
-      key={item.id + 'prt'}
-      name={item.name}
-      producTypes={item.productType}
-      price={item.price}
-      rating={item.rating}
-      image={item.image}
-      
-      //description={item.description}
-      
-    />
-  ));
+ 
   // const [value, setValue] = React.useState(0);
   // const addProductos = () => {
   // }
 
-const addToBasket=()=>{
-  props.setValue(props.value + 1)
-}
+
 
   return (
-    <div className='card'>
-      {_products.map((item, index)=>(
+  
+     
     <Card sx={{ maxWidth: 400 }}>
       <CardHeader
         action={
@@ -75,7 +61,7 @@ const addToBasket=()=>{
             className='price'
             variant='h5'
             color='textSecondary'>
-            {accounting.formatMoney(item.price, "$")}
+            {accounting.formatMoney(props.price, "$")}
           </Typography>
         }
       />
@@ -83,7 +69,7 @@ const addToBasket=()=>{
         className='nn'
         style={{ fontWeight: 'bold', textAlign:'left'}}
         variant='h6'>
-        &#160; {item.name}
+        &#160; {props.name}
     
       </Typography>
       <Typography>
@@ -92,14 +78,14 @@ const addToBasket=()=>{
       <CardMedia  className='product--image'
         component="img"
         height="300"
-        image={item.image}
+        image={props.image}
         alt="Cemento"
       />
       <CardContent variant='body2' color='textSecondary'>
-        {item.productType}
+        {props.productType}
       </CardContent>
       <CardActions disableSpacing>
-        {Array(item.rating)
+        {Array(props.rating)
           .fill()
           .map((_, i) => (<p key={i}>&#11088;</p>
           ))}
@@ -117,7 +103,7 @@ const addToBasket=()=>{
         &#160;<ItemCount setValue={props.setValue} value={props.value} />
           <br></br>
           <Stack direction="row" spacing={3}>
-            <Button onClick={addToBasket} variant="contained" color="primary" style={{ width: '100%'}}>
+            <Button onClick={props.numElementoHandler} variant="contained" color="primary" style={{ width: '100%'}}>
               Añadir
             </Button>
           </Stack>
@@ -125,8 +111,8 @@ const addToBasket=()=>{
       </Collapse>
     </Card>
         
-      ))}
-    </div>
+      
+  
   );
 }
 

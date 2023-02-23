@@ -16,19 +16,15 @@ function Home (props){
   return (
   <div>
           <Carousel/>
-          <CaruselProducto setValue={props.setValue} value={props.value}/>
+          <CaruselProducto {...props}/>
   </div>
   );
 }
-
-
 function App() {
-
-  const [value, setValue] = useState(0);
-
+  const [countElemento, setcountElemento] = useState(0);
   return (
     <Router>
-      <Navbar value={value}/>
+      <Navbar value={countElemento}/>
       <Routes>
         <Route path='/SignIn' element={<SignIn/>}/> 
         <Route path='/Checkout' element={<CheckoutPage/>}/>
@@ -36,7 +32,7 @@ function App() {
         <Route path='/GridProducto' element={<GridProductos/>}/>
         <Route path='/Envios' element={<DatosEnvio/>}/>
         <Route path='/Mapa' element={<Mapa/>}/>
-        <Route path='/' element={<Home setValue={setValue} value={value}/>}/>
+        <Route path='/' element={<Home setcountElemento={setcountElemento} countElemento={countElemento}/>}/>
       </Routes>
 
     </Router>

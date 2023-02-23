@@ -3,8 +3,10 @@ import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Product from './Product';
+import {_products} from './product-data';
 
-import "react-multi-carousel/lib/styles.css";
+
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -28,14 +30,38 @@ const responsive = {
 
 
 
+
+
 export default function CaruselProducto(props) {
+  function addToBasket(){
+    props.setcountElemento(props.countElemento+ 1)
+
+  }
+  
+const product = _products.map((item) => ( 
+  <Product 
+    key={item.id + 'prt'}
+    name={item.name}
+    producTypes={item.productType}
+    price={item.price}
+    rating={item.rating}
+    image={item.image}
+    numElementoHandler={addToBasket}
+    //description={item.description}
+    
+  />
+));
+  
   return (
+
     <div >
+      
       <h1>&#160;&#160;Nuestros Productos</h1>
-      <div className='col-4'>
-      <Product setValue={props.setValue} value={props.value} className="col-4"/>      
-      </div>
+      <Carousel responsive={responsive}>
+      {product}
+      </Carousel>
     </div>
+
   );
 } 
 
