@@ -88,9 +88,10 @@ ul, ol {
 
 
 
-.right{
-    float:right;
+.rights{
+    float:left;
     background:rgba(250, 246, 4, 0.692);
+    position: relative;
 
 }
 

@@ -18,23 +18,16 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
 class DatosEnvio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lat: '',
-      lng: ''
-    };
+  constructor(props) { super(props); 
+      this.state = { lat: '', lng: '' };
   }
-
   updateLatLong = (lat, lng) => {
-    this.setState({
-      lat: lat,
-      lng: lng
-    });
+    this.setState({lat: lat, lng: lng });
   }
-
   render() {
-    return (
+    const { lat, lng } = this.state;
+    const AddressForm = () => {
+      return (
     <div className='container-addr-nvio-prd'>
       <div className='div-fm-der'>
     <TableContainer component={Paper}>
@@ -46,99 +39,48 @@ class DatosEnvio extends React.Component {
         </TableHead>
         <TableBody>  
               <TableCell component="th" scope="row">
-              <TextField
-                required
-                id="firstName"
-                name="firstName"
-                label="Nombres(s)"
-                fullWidth
-                autoComplete="given-name"
-                variant="standard"
-
-              />
+              <TextField  required id="firstName" name="firstName" label="Nombres(s)"  fullWidth
+                autoComplete="given-name"  variant="standard" />
               </TableCell>
         </TableBody>
-
         <TableBody>
           <TableCell component="th" scope="row">
-              <TextField
-                  required
-                  id="lastName"
-                  name="lastName"
-                  label="Apellido(s)"
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="standard"
-              />
+              <TextField  required id="lastName"  name="lastName" label="Apellido(s)"  fullWidth 
+                  autoComplete="family-name"   variant="standard" />
             </TableCell>
         </TableBody>
-       
        <TableBody>
           <TableCell component="th" scope="row">
-              <TextField
-                required
-                id="phone"
-                name="phone"
-                type="phone"
-                label="Telefono"
-                fullWidth
-                autoComplete="family-name"
-                variant="standard"
-                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-          />
+              <TextField required id="phone" name="phone" type="phone"  label="Telefono"  fullWidth
+                autoComplete="family-name" variant="standard" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
           </TableCell>
        </TableBody>
-       
        <TableBody>
           <TableCell component="th" scope="row">
-              <TextField
-                  required
-                  id="lat"
-                  name="lat"
-                  label="Latitud"
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="standard"
-                  value={this.state.lat}
-              />
+              <TextField required id="lat" name="lat" label="Latitud" fullWidth autoComplete="family-name" variant="standard" 
+               value={this.state.lat}/>
             </TableCell>
         </TableBody>
-
         <TableBody>
           <TableCell component="th" scope="row">
-              <TextField
-                  required
-                  id="alt"
-                  name="alt"
-                  label="Altitud"
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="standard"
-                  value={this.state.alt}
-              />
+              <TextField  required id="alt"  name="alt" label="Altitud" fullWidth  autoComplete="family-name"
+                  variant="standard"  value={this.state.alt}/>
             </TableCell>
         </TableBody>
-
         <TableBody>
-        <br></br>
-        <br></br>
-          <div className='btn-ps-pg'>
-            
-        <Button variant="outlined">Guardar</Button>
-        </div>
+        <br></br><br></br>
+          <div className='btn-ps-pg'> <Button variant="outlined">Guardar</Button> </div>
         </TableBody>
-
-
-      </Table>
-     </TableContainer>   
-       </div>
+      </Table>  </TableContainer>   </div>
       <div className='div-fm-izq'>
-        <div className='mapa'>
-          <Mapa/>
-        </div>
-       </div>
-    </div>
+        <div className='mapa'> <Mapa/> </div> </div> </div>
+  );    } 
+
+  return (
+  <div>
+    <AddressForm/>
+  </div>
   );
-    }
   }
-  export default DatosEnvio
+}
+export default DatosEnvio;

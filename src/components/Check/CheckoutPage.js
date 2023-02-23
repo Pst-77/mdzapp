@@ -9,10 +9,10 @@ import Total from '../Total/Total';
 import { useStateValue } from '../../CtxApii/StateProvider';
 
 function FormRow(){
-    const [{basket}, dispatch]=useStateValue();
+    //const [{basket}, dispatch]=useStateValue();
     return(
 <React.Fragment>
-    {basket?.map((item)=>(
+    {_products.map((item)=>(
         <Grid item xs={12} sm={8} md={6} lg={10} key={item.id + 'chprd'}>
             <CheckoutCard  pproduct={item}/>
         </Grid>
