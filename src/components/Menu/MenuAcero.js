@@ -64,7 +64,7 @@ export default function SimpleMenuAcero() {
     <div>
       <Button id="demo-customized-button"  aria-controls={open ? 'demo-customized-menu' : undefined}
         aria-haspopup="true" aria-expanded={open ? 'true' : undefined} variant="contained"
-        disableElevation onClick={handleClick}  endIcon={<KeyboardArrowDownIcon />} color="info">
+        disableElevation onClick={handleClick}  endIcon={<KeyboardArrowDownIcon />} color="primary">
         Aceros
       </Button>
 
