@@ -31,9 +31,9 @@ function Navbar(props) {
 
     return (
       <div className="container">
-        <Link to ="/">
+        
         <h1>MADEZA</h1>
-        </Link>
+        
         <nav ref={navref}>
       
         <ul className="nav">

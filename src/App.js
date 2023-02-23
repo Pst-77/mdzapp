@@ -10,6 +10,7 @@ import SignIn from './components/Login/SignIn';
 import DatosEnvio from './components/CarruselPago/DatosEnvio';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState } from "react";
+import Mapa from './components/Mapa/Mapa';
 
 function Home (props){
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/DetalleProducto' element={<DetalleProducto/>}/>
         <Route path='/GridProducto' element={<GridProductos/>}/>
         <Route path='/Envios' element={<DatosEnvio/>}/>
+        <Route path='/Mapa' element={<Mapa/>}/>
         <Route path='/' element={<Home setValue={setValue} value={value}/>}/>
       </Routes>
 
