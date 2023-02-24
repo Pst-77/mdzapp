@@ -61,7 +61,7 @@ export default function CheckoutTable({pproduct:{id, name, productType, image, p
               <TableCell component="th" scope="row"><img className='Carmediapg' src={image}/>             </TableCell>
               <TableCell align="right">{name}</TableCell>
               <TableCell align="right">{accounting.formatMoney (price, "$")}</TableCell>
-              <TableCell align="center">{cantidadProducto}<br></br><ItemCount/></TableCell>
+              <TableCell align="center">{cantidadProducto}<br></br><ItemCount /></TableCell>
               <TableCell align="right">{accounting.formatMoney (price * cantidadProducto, "$")}</TableCell>
             </TableRow>
       </TableBody>

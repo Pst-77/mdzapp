@@ -53,11 +53,14 @@ const detalleProducto={
   };
 
  
-  // const [value, setValue] = React.useState(0);
-  // const addProductos = () => {
-  // }
 
-
+  const handleMouseOver = () => {
+    setExpanded(true);
+  }
+  
+  const handleMouseOut = () => {
+    setExpanded(false);
+  }
 
   return (
   
@@ -88,6 +91,8 @@ const detalleProducto={
         height="300"
         image={props.item.image}
         alt="Cemento"
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       />
       <CardContent variant='body2' color='textSecondary'>
         {props.item.productType}
