@@ -34,14 +34,16 @@ export default function CheckoutPage(props) {
 
 useEffect(() => {
     
-        
+    let newSubtotal = 0;
+    let newSumacantidad = 0;
+    
     props.countElemento.forEach(i => {
-        
-        setsubtotal(subtotal + i.cantidadSeleccionada*i.productoSeleccionado.price )
-        setsumacantidad(sumacantidad + i.cantidadSeleccionada)
+        newSubtotal += i.cantidadSeleccionada * i.productoSeleccionado.price;
+        newSumacantidad += i.cantidadSeleccionada;
     });
 
-
+    setsubtotal(newSubtotal);
+    setsumacantidad(newSumacantidad);
 }, [])
 
 

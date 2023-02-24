@@ -11,7 +11,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 //import {withStyles } from '@mui/material';
 import './Total.css'
+import { v4 as uuidv4 } from 'uuid';
 
+const uuid = uuidv4(); 
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -49,7 +51,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const Total = (props)=>{
     return(
          <div className='tt-pg-prd'>
-            Folio de compra: 15022311250145687
+        <span style={{fontSize: '40%'}}>Folio de compra: {uuid}</span>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: '40vh' }} aria-label="customized table">
         <TableHead >
@@ -82,7 +84,7 @@ const Total = (props)=>{
         <StyledTableRow>
               <StyledTableCell  scope="row"><h3> Total </h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(props.subtotal *1.16, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right"><h3>{accounting.formatNumber(props.subtotal * 1.16, "$")}</h3></StyledTableCell>
         </StyledTableRow>
         </TableBody>
        
