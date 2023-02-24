@@ -65,7 +65,8 @@ const detalleProducto={
   return (
   
      
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 400 }} onMouseOver={handleMouseOver}
+    onMouseOut={handleMouseOut}>
       <CardHeader
         action={
           <Typography
@@ -92,7 +93,7 @@ const detalleProducto={
         image={props.item.image}
         alt="Cemento"
         onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        
       />
       <CardContent variant='body2' color='textSecondary'>
         {props.item.productType}
@@ -110,7 +111,7 @@ const detalleProducto={
         >
           <ExpandMoreIcon />
         </ExpandMore>
-      </CardActions>
+      </CardActions >
       <Collapse in={expanded} timeout="auto" unmountOnExit >
         <CardContent >
         &#160;<ItemCount cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={setcantidadSeleccionada}/>
