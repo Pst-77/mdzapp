@@ -21,13 +21,16 @@ function Home (props){
   );
 }
 function App() {
-  const [countElemento, setcountElemento] = useState(0);
+  const [countElemento, setcountElemento] = useState([]);
+  
+ 
+
   return (
     <Router>
-      <Navbar value={countElemento}/>
+      <Navbar value={countElemento.length}/>
       <Routes>
         <Route path='/SignIn' element={<SignIn/>}/> 
-        <Route path='/Checkout' element={<CheckoutPage/>}/>
+        <Route path='/Checkout' element={<CheckoutPage countElemento={countElemento} setcountElemento={setcountElemento}/> }/>
         <Route path='/DetalleProducto' element={<DetalleProducto/>}/>
         <Route path='/GridProducto' element={<GridProductos/>}/>
         <Route path='/Envios' element={<DatosEnvio/>}/>

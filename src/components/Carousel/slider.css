@@ -18,7 +18,7 @@
   position: relative;
   margin: auto;
   overflow: hidden;
-  
+  margin-top: -2%;
 }
 
 .active {

@@ -39,6 +39,14 @@ const ExpandMore = styled((props) => {
 
 export default function Product(props) {
   const [expanded, setExpanded] = React.useState(false);
+  const [cantidadSeleccionada, setcantidadSeleccionada] = React.useState(0)
+  
+const detalleProducto={
+  cantidadSeleccionada,
+  productoSeleccionado:props.item,
+}
+
+
   const[{basket}, dispatch]=useStateValue();
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -61,7 +69,7 @@ export default function Product(props) {
             className='price'
             variant='h5'
             color='textSecondary'>
-            {accounting.formatMoney(props.price, "$")}
+            {accounting.formatMoney(props.item.price, "$")}
           </Typography>
         }
       />
@@ -69,23 +77,23 @@ export default function Product(props) {
         className='nn'
         style={{ fontWeight: 'bold', textAlign:'left'}}
         variant='h6'>
-        &#160; {props.name}
+        &#160; {props.item.name}
     
       </Typography>
       <Typography>
-        <p className='stk-prd'>&nbsp;&nbsp;"In stock"</p>
+        &nbsp;&nbsp;"In stock"
       </Typography>
       <CardMedia  className='product--image'
         component="img"
         height="300"
-        image={props.image}
+        image={props.item.image}
         alt="Cemento"
       />
       <CardContent variant='body2' color='textSecondary'>
-        {props.productType}
+        {props.item.productType}
       </CardContent>
       <CardActions disableSpacing>
-        {Array(props.rating)
+        {Array(props.item.rating)
           .fill()
           .map((_, i) => (<p key={i}>&#11088;</p>
           ))}
@@ -100,10 +108,10 @@ export default function Product(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit >
         <CardContent >
-        &#160;<ItemCount setValue={props.setValue} value={props.value} />
+        &#160;<ItemCount cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={setcantidadSeleccionada}/>
           <br></br>
           <Stack direction="row" spacing={3}>
-            <Button onClick={props.numElementoHandler} variant="contained" color="primary" style={{ width: '100%'}}>
+            <Button onClick={()=> props.numElementoHandler(detalleProducto)} variant="contained" color="primary" style={{ width: '100%'}}>
               Añadir
             </Button>
           </Stack>

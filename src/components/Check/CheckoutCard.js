@@ -53,7 +53,7 @@ export default function CheckoutCard({pproduct:{id, name, productType, image, pr
   }
 
   return (
-    <Card sx={{ maxWidth: 930 }}>
+    <Card sx={{ maxWidth: 1000 }}>
        <div>
         <div className='Carmediapg'>
              <CardMedia  

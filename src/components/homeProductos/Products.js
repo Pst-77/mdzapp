@@ -29,39 +29,26 @@ const responsive = {
 
 
 
-
-
-
 export default function CaruselProducto(props) {
-  function addToBasket(){
-    props.setcountElemento(props.countElemento+ 1)
-
+  function addToBasket(detalleProducto){
+    props.setcountElemento( [...props.countElemento, detalleProducto])
   }
-  
+
 const product = _products.map((item) => ( 
-  <Product 
+  <Product  item={item}
     key={item.id + 'prt'}
-    name={item.name}
-    producTypes={item.productType}
-    price={item.price}
-    rating={item.rating}
-    image={item.image}
     numElementoHandler={addToBasket}
     //description={item.description}
-    
   />
 ));
   
   return (
-
     <div >
-      
       <h1>&#160;&#160;Nuestros Productos</h1>
       <Carousel responsive={responsive}>
       {product}
       </Carousel>
     </div>
-
   );
 } 
 
