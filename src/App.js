@@ -11,6 +11,12 @@ import DatosEnvio from './components/CarruselPago/DatosEnvio';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState } from "react";
 import Mapa from './components/Mapa/Mapa';
+//import TablaProductosPedido from './components/Check/CheckoutCard';
+
+
+
+
+
 
 function Home (props){
   return (
@@ -35,6 +41,7 @@ function App() {
         <Route path='/GridProducto' element={<GridProductos/>}/>
         <Route path='/Envios' element={<DatosEnvio/>}/>
         <Route path='/Mapa' element={<Mapa/>}/>
+       {/* <Route path='/Tabla' element={<TablaProductosPedido/>}/>*/}
         <Route path='/' element={<Home setcountElemento={setcountElemento} countElemento={countElemento}/>}/>
       </Routes>
 

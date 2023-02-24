@@ -33,7 +33,7 @@ function Navbar(props) {
     return (
       <div className="container">
         
-        <h1>MADEZA</h1>
+        <Link to="/" style={{color:'white', textDecoration:'none'}}><h1>MADEZA</h1></Link>
         
         <nav ref={navref}>
       

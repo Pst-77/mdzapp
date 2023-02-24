@@ -45,14 +45,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
 
-function sumacantidadProductos(){
-
-}
 
 const Total = (props)=>{
     return(
          <div className='tt-pg-prd'>
-            <h5>Folio de compra: 15022311250145687</h5>
+            Folio de compra: 15022311250145687
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: '40vh' }} aria-label="customized table">
         <TableHead >
@@ -65,33 +62,27 @@ const Total = (props)=>{
         <TableBody>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Total de Productos  </h3>
+              <StyledTableCell  scope="row"> <h3>Total de Productos  </h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(8, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right">{props.cantidad}</StyledTableCell>
         </StyledTableRow>
             
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Subtotal  </h3>
+              <StyledTableCell  scope="row"> <h3>Subtotal  </h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(50, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right"><h3>{accounting.formatNumber(props.subtotal, "$")}</h3></StyledTableCell>
         </StyledTableRow>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Descuento  </h3>
+              <StyledTableCell  scope="row"> <h3>I.V.A</h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(50, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right"><h3>{accounting.formatNumber(props.subtotal*0.16, "$")}</h3></StyledTableCell>
         </StyledTableRow>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3><h3>{accounting.formatNumber(50, "$")}</h3> </h3>
+              <StyledTableCell  scope="row"><h3> Total </h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(50, "$")}</h3></StyledTableCell>
-        </StyledTableRow>
-
-        <StyledTableRow>
-              <StyledTableCell component="th" scope="row"><h3> Total </h3>
-              </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(50000, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right"><h3>{accounting.formatNumber(props.subtotal *1.16, "$")}</h3></StyledTableCell>
         </StyledTableRow>
         </TableBody>
        
