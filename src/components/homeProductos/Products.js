@@ -31,7 +31,18 @@ const responsive = {
 
 export default function CaruselProducto(props) {
   function addToBasket(detalleProducto){
-    props.setcountElemento( [...props.countElemento, detalleProducto])
+    const validaProductoLista=[...props.countElemento]
+    let prdEncontrado=validaProductoLista.find(indexprd=>indexprd.productoSeleccionado===detalleProducto.productoSeleccionado)
+    if (!!prdEncontrado){
+    prdEncontrado.cantidadSeleccionada+=detalleProducto.cantidadSeleccionada
+    validaProductoLista[prdEncontrado]=prdEncontrado
+    }
+    else{
+      validaProductoLista.push(detalleProducto)
+
+    }
+
+    props.setcountElemento(validaProductoLista)
   }
 
 const product = _products.map((item) => ( 

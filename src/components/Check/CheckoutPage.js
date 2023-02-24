@@ -8,13 +8,13 @@ import "./checkCardStilo.css";
 import Total from '../Total/Total';
 import { useStateValue } from '../../CtxApii/StateProvider';
 
-function FormRow(){
+function FormRow(props){
     //const [{basket}, dispatch]=useStateValue();
     return(
 <React.Fragment>
-    {_products.map((item)=>(
+    {props.lstProducto.map((item)=>(
         <Grid item xs={12} sm={8} md={6} lg={10} key={item.id + 'chprd'}>
-            <CheckoutCard  pproduct={item}/>
+            <CheckoutCard  pproduct={item.productoSeleccionado} cantidadProducto={item.cantidadSeleccionada}/>
         </Grid>
     ))}
 </React.Fragment>
@@ -22,7 +22,7 @@ function FormRow(){
 }
 
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props) {
 
   return (
     <div>
@@ -37,12 +37,12 @@ export default function CheckoutPage() {
                 </Grid>
                 
                 <Grid item xs={12} sm={6} md={5} lg={8}container spacing={2}>
-                <FormRow/>
+                <FormRow lstProducto={props.countElemento}/>
                 </Grid>
                 
                 <Grid item xs={12} sm={4} md={3}>
                     <Typography aling='center'  gutterBottom varian = 'h4'>
-                    <Total/>
+                    <Total lstProducto={props.countElemento}/>
                    </Typography>
                 </Grid> 
     

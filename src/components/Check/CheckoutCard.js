@@ -40,7 +40,7 @@ const ExpandMore = styled((props) => {
 
 
 
-export default function CheckoutCard({pproduct:{id, name, productType, image, price, rating}}) {
+export default function CheckoutCard({pproduct:{id, name, productType, image, price, rating}, cantidadProducto}) {
   const [expanded, setExpanded] = React.useState(false);
 //  const classes=useStyles();
   //const { name, price, rating, image, description } = pproduct;
@@ -90,15 +90,14 @@ export default function CheckoutCard({pproduct:{id, name, productType, image, pr
                 {name}
                 </div>
                 <div className='prc-producto'>
-                {accounting.formatMoney (price, "-$")}
-                <br></br>
+            
                 {accounting.formatMoney (price, "$")}
                 </div>
                 <div className='count-producto'>
-                {1000}
+                {cantidadProducto}
                 </div>
                 <div className='tt-producto'>
-                {accounting.formatMoney (1500000, "$")}
+                {accounting.formatMoney (price * cantidadProducto, "$")}
                 </div>
                 <div className='ic-delete'>
                 <DeleteIcon/>

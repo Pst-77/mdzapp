@@ -44,22 +44,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       borderBottom: 'none',
     },
   }));
-  
 
- 
+function sumacantidadProductos(){
 
+}
 
-
-
-
-
-
-
-
-
-
-
-const Total = ()=>{
+const Total = (props)=>{
     return(
          <div className='tt-pg-prd'>
             <h5>Folio de compra: 15022311250145687</h5>
@@ -77,7 +67,7 @@ const Total = ()=>{
         <StyledTableRow>
               <StyledTableCell component="th" scope="row"> <h3>Total de Productos  </h3>
               </StyledTableCell>
-              <StyledTableCell align="right"><h3>{accounting.formatNumber(50, "$")}</h3></StyledTableCell>
+              <StyledTableCell align="right"><h3>{accounting.formatNumber(8, "$")}</h3></StyledTableCell>
         </StyledTableRow>
             
         <StyledTableRow>
