@@ -13,11 +13,8 @@ import accounting from 'accounting';
 import ItemCount from '../ContadorProductos/BtnContador.js';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import {useStateValue} from '../../CtxApii/StateProvider'
-import {_products, responsive} from './product-data';
-import { ActionTypes } from '@mui/base';
+import { Link } from 'react-router-dom';
 import './producthome.css'
-import { actionTypes } from '../../CtxApii/reducer.js';
 
 
 
@@ -41,32 +38,38 @@ export default function Product(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [cantidadSeleccionada, setcantidadSeleccionada] = React.useState(0)
   
-const detalleProducto={
-  cantidadSeleccionada,
-  productoSeleccionado:props.item,
-}
+
+  const detalleProducto = {
+    cantidadSeleccionada,
+    productoSeleccionado: props.item,
+  }
+  //const {item, numElementoHandler}=props
 
 
-  const[{basket}, dispatch]=useStateValue();
+
+  //const[{basket}, dispatch]=useStateValue();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
- 
+
 
   const handleMouseOver = () => {
     setExpanded(true);
   }
-  
+
   const handleMouseOut = () => {
     setExpanded(false);
   }
+  const handlerDetalleProducto=()=>{
+    props.setoProducto(props.item)
+  }
 
   return (
-  
-     
+
+
     <Card sx={{ maxWidth: 400 }} onMouseOver={handleMouseOver}
-    onMouseOut={handleMouseOut}>
+      onMouseOut={handleMouseOut}>
       <CardHeader
         action={
           <Typography
@@ -79,22 +82,25 @@ const detalleProducto={
       />
       <Typography
         className='nn'
-        style={{ fontWeight: 'bold', textAlign:'left'}}
+        style={{ fontWeight: 'bold', textAlign: 'left' }}
         variant='h6'>
         &#160; {props.item.name}
-    
+
       </Typography>
       <Typography>
         &nbsp;&nbsp;"In stock"
       </Typography>
-      <CardMedia  className='product--image'
-        component="img"
-        height="300"
-        image={props.item.image}
-        alt="Cemento"
-        onMouseOver={handleMouseOver}
-        
-      />
+      <Link to={`/DetalleProducto/${props.item.id}`}>
+        <CardMedia className='product--image'
+          component="img"
+          height="300"
+          image={props.item.image}
+          alt="Cemento"
+          onMouseOver={handleMouseOver}
+          onClick={handlerDetalleProducto}
+
+        />
+      </Link>
       <CardContent variant='body2' color='textSecondary'>
         {props.item.productType}
       </CardContent>
@@ -114,19 +120,19 @@ const detalleProducto={
       </CardActions >
       <Collapse in={expanded} timeout="auto" unmountOnExit >
         <CardContent >
-        &#160;<ItemCount cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={setcantidadSeleccionada}/>
+          &#160;<ItemCount cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={setcantidadSeleccionada} />
           <br></br>
           <Stack direction="row" spacing={3}>
-            <Button onClick={()=> props.numElementoHandler(detalleProducto)} variant="contained" color="primary" style={{ width: '100%'}}>
+            <Button onClick={() => props.numElementoHandler(detalleProducto)} variant="contained" color="primary" style={{ width: '100%' }}>
               Añadir
             </Button>
           </Stack>
         </CardContent>
       </Collapse>
     </Card>
-        
-      
-  
+
+
+
   );
 }
 

@@ -8,7 +8,7 @@ export const ItemCount =(props)=>{
 
     const handleIncrement = () => {
       props.setcantidadSeleccionada(props.cantidadSeleccionada + 1);
-
+                  //set actualiza el valor recibido de 14
     };
   
     const handleDecrement = () => {
@@ -24,7 +24,7 @@ export const ItemCount =(props)=>{
        <input className="inputnum" type="numeric" value={props.cantidadSeleccionada || 0} onChange={(e)=>props.setcantidadSeleccionada(e.target.value)} />  
 
         <AddIcon onClick={handleIncrement} fontSize="large" color="primary"  cursor='pointer'/>
-
+                             {/* //se manda a llamara a esta funcion*/}
 
         </div>
     );

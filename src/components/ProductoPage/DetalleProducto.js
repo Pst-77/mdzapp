@@ -9,12 +9,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+
+import { useParams } from 'react-router-dom';
+
 import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 import accounting from 'accounting'
 import { tableCellClasses } from '@mui/material/TableCell';
 import ItemCount from '../ContadorProductos/BtnContador';
+import { useState } from 'react';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,21 +53,27 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function DetalleProducto() {
 
+
+
+export default function DetalleProducto(props) {
+  const [cantidadSeleccionada, setcantidadSeleccionada] = useState(0)
+
+  const { id } = useParams();
+ 
   return ( <div>
     <Grid container spacing={3}>
             
             <Grid item xs={12} lg={5}>
             <Typography aling ='center' gutterBottom varian = 'h4'>
                 <div className='ttpage'>
-                <h1>Carrito de Compras</h1>
+                Carrito de Compras
                 </div>
             </Typography>
             </Grid>
             
             <Grid item xs={12} sm={6} md={5} lg={8}container spacing={2}>
-            <img src="https://www.construrama.com/medias/?context=bWFzdGVyfGltYWdlc3wxOTA1NnxpbWFnZS9qcGVnfGltYWdlcy9oYzEvaGM0LzkxNzAyNjY2NTI3MDIuanBnfGQzNjU0N2JiYTZiMjVhYmMyNTE0NTNmZmIyOWQyODRmZTJmZTI0OWYzMTNiM2YyYTk2NDA0ZjZlNWUwZjkwZDQ"/>
+            <img src={props.oProducto.image}/>
             </Grid>
             
             <Grid item xs={12} sm={4} md={3} lg={3.5}>
@@ -79,36 +90,36 @@ export default function DetalleProducto() {
         <TableBody>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Cemento: Blanco </h3>
+              <StyledTableCell component="th" scope="row"> <h3>{props.oProducto.name}</h3>
               </StyledTableCell>
 
         </StyledTableRow>
             
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Marca: CEMEX  </h3>
+              <StyledTableCell component="th" scope="row"> <h3>{props.oProducto.productType}</h3>
               </StyledTableCell>
 
         </StyledTableRow>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Unidad: Saco  </h3>
+              <StyledTableCell component="th" scope="row"> <h3>{props.oProducto.raiting} </h3>
               </StyledTableCell>
               
         </StyledTableRow>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"> <h3>Precio: {accounting.formatNumber(50, "$")}</h3> 
+              <StyledTableCell component="th" scope="row"> <h3>Precio: {accounting.formatNumber(props.oProducto.price, "$")}</h3> 
               </StyledTableCell>
 
         </StyledTableRow>
 
         <StyledTableRow>
 
-              <StyledTableCell align="left"><h3>Descripcion</h3></StyledTableCell>
+              <StyledTableCell align="left"><h3>{props.oProducto.description}</h3></StyledTableCell>
         </StyledTableRow>
 
         <StyledTableRow>
-              <StyledTableCell component="th" scope="row"><h3>Cantidad:</h3> <ItemCount/> 
+              <StyledTableCell component="th" scope="row"><h3>Cantidad:</h3> <ItemCount cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={setcantidadSeleccionada} /> 
               </StyledTableCell>
 
         </StyledTableRow>

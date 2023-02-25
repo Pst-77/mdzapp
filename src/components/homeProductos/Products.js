@@ -35,24 +35,22 @@ export default function CaruselProducto(props) {
     let prdEncontrado=validaProductoLista.find(indexprd=>indexprd.productoSeleccionado===detalleProducto.productoSeleccionado)
     if (!!prdEncontrado){
     prdEncontrado.cantidadSeleccionada+=detalleProducto.cantidadSeleccionada
-    validaProductoLista[prdEncontrado]=prdEncontrado
+//    validaProductoLista[prdEncontrado]=prdEncontrado
     }
     else{
       validaProductoLista.push(detalleProducto)
-
     }
-
     props.setcountElemento(validaProductoLista)
   }
 
 const product = _products.map((item) => ( 
   <Product  item={item}
     key={item.id + 'prt'}
-    numElementoHandler={addToBasket}
+    numElementoHandler={addToBasket} setoProducto={props.setoProducto}
+    
     //description={item.description}
   />
 ));
-  
   return (
     <div >
       <h1>&#160;&#160;Nuestros Productos</h1>
