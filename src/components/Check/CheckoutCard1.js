@@ -40,7 +40,7 @@ const ExpandMore = styled((props) => {
 
 
 
-export default function CheckoutCard1({pproduct:{id, name, productType, image, price, rating}, cantidadProducto}) {
+export default function CheckoutCard1({pproduct:{id, descripcion, marca, url_foto, precioventa}, cantidadProducto}) {
   const [expanded, setExpanded] = React.useState(false);
 //  const classes=useStyles();
   //const { name, price, rating, image, description } = pproduct;
@@ -59,7 +59,7 @@ export default function CheckoutCard1({pproduct:{id, name, productType, image, p
              <CardMedia  
                 component="img"
                 height="50"
-                image={image}
+                image={url_foto}
               >
              </CardMedia>
         </div>
@@ -87,17 +87,17 @@ export default function CheckoutCard1({pproduct:{id, name, productType, image, p
         action={
                 <Typography className= 'nn' variant='h6'>
                 <div className='nm-producto'>
-                {name}
+                {descripcion}
                 </div>
                 <div className='prc-producto'>
             
-                {accounting.formatMoney (price, "$")}
+                {accounting.formatMoney (precioventa, "$")}
                 </div>
                 <div className='count-producto'>
                 {cantidadProducto}
                 </div>
                 <div className='tt-producto'>
-                {accounting.formatMoney (price * cantidadProducto, "$")}
+                {accounting.formatMoney (precioventa * cantidadProducto, "$")}
                 </div>
                 <div className='ic-delete'>
                 <DeleteIcon/>
@@ -108,24 +108,6 @@ export default function CheckoutCard1({pproduct:{id, name, productType, image, p
       </div>
       
       
- {/*className={classes.CardActions} no se puso esto como clase de CardAction*/}
-      <CardActions disableSpacing color='#FFF3E0'>
-       <div className='darray' > 
-           <h4>Rating: </h4> {Array(rating)
-            .fill()
-            .map((_,i)=>(<p key={'pg'+i}>&#11088;</p>
-            ))}
-       </div>
-        
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       
       <div className='btn-cnt-prd'>

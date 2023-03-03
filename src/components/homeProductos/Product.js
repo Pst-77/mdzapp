@@ -68,15 +68,15 @@ export default function Product(props) {
   return (
 
 
-    <Card sx={{ maxWidth: 400 }} onMouseOver={handleMouseOver}
+    <Card sx={{ maxWidth: 400}} onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}>
       <CardHeader
         action={
           <Typography
             className='price'
             variant='h5'
-            color='textSecondary'>
-            {accounting.formatMoney(props.item.price, "$")}
+            color='black'>
+            <strong>{accounting.formatMoney(props.item.precioventa, "$")}</strong>
           </Typography>
         }
       />
@@ -84,31 +84,26 @@ export default function Product(props) {
         className='nn'
         style={{ fontWeight: 'bold', textAlign: 'left' }}
         variant='h6'>
-        &#160; {props.item.name}
+        &#160; {props.item.descripcion}
 
       </Typography>
-      <Typography>
-        &nbsp;&nbsp;"In stock"
-      </Typography>
-      <Link to={`/DetalleProducto/${props.item.id}`}>
+
+      <Link to={`/Detalle/${props.item.producto}`}>
         <CardMedia className='product--image'
           component="img"
           height="300"
-          image={props.item.image}
+          image={props.item.url_foto}
           alt="Cemento"
           onMouseOver={handleMouseOver}
           onClick={handlerDetalleProducto}
 
         />
       </Link>
-      <CardContent variant='body2' color='textSecondary'>
-        {props.item.productType}
+      <CardContent variant='body2' className="Card-Categoria" >
+      {props.item.marca}
       </CardContent>
       <CardActions disableSpacing>
-        {Array(props.item.rating)
-          .fill()
-          .map((_, i) => (<p key={i}>&#11088;</p>
-          ))}
+      
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

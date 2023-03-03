@@ -1,27 +1,27 @@
 const _productoApitemp=[
   {
     "id": 1,
-    "producto": "501206691038",
-    "descripcion": "Cemento Cruz Azul  bulto 50kg",
-    "peso": 50,
-    "precioventa": 220,
-    "mayoreo1": 210,
-    "mayoreo2": 200,
-    "mayoreo3": 190,
-    "mayoreo4": 180,
-    "mayoreo5": 175,
-    "subcategoria": "Cemento",
-    "createat": "2023-01-25T00:00:00.000Z",
-    "updateat": "2023-02-27T00:00:00.000Z",
-    "marca": "Cruz Azul",
-    "url_foto": "https://nuevaimagen.com",
-    "activo": "si",
-    "paginaweb": null
+    producto: "501206691038",
+    descripcion: "Block 15x23x12",
+    peso: 50,
+    precioventa: 220,
+    mayoreo1: 210,
+    mayoreo2: 200,
+    mayoreo3: 190,
+    mayoreo4: 180,
+    mayoreo5: 175,
+    subcategoria: "Cemento",
+    createat: "2023-01-25T00:00:00.000Z",
+    updateat: "2023-02-27T00:00:00.000Z",
+    marca: "Mitza",
+    url_foto: "https://www.construrama.com/medias/?context=bWFzdGVyfGltYWdlc3wxMzc2OTl8aW1hZ2UvanBlZ3xpbWFnZXMvaDUyL2gyNC84ODk5OTIyOTg0OTkwLmpwZ3w2NGY5MzU0ZjMyYjk0ZmZkYmI5ZDMzZWI3MzhkM2Y4ZWVhOTNiNjBiMjM3MDkzZjZiNjQwZDFjMjY2YjZjN2Y4",
+    activo: "si",
+    paginaweb: null
 },
 {
     "id": 2,
     "producto": "10000953",
-    "descripcion": "Cemento Blanco bulto de 50kg",
+    "descripcion": "Malla electroestatica",
     "peso": 50,
     "precioventa": 209,
     "mayoreo1": 206,
@@ -29,11 +29,11 @@ const _productoApitemp=[
     "mayoreo3": 200,
     "mayoreo4": 197,
     "mayoreo5": 196,
-    "subcategoria": "Cemento",
+    "subcategoria": "Aceros",
     "createat": "2023-01-25T00:00:00.000Z",
     "updateat": "2023-02-27T00:00:00.000Z",
     "marca": "Cemex",
-    "url_foto": "src\\uploads\\1674691943986-Cemento tonelada.jpg",
+    "url_foto": "https://rogonsa.com.mx/wp-content/uploads/2021/02/malla_electrosoldada.png",
     "activo": "si",
     "paginaweb": null
 },
@@ -154,7 +154,7 @@ const _productoApitemp=[
 {
     "id": 9,
     "producto": "CMA0202000024",
-    "descripcion": "Escalerilla 12-2 Cal.10 6M, Pi",
+    "descripcion": "Armex",
     "peso": 0,
     "precioventa": 150,
     "mayoreo1": 145,
@@ -166,7 +166,7 @@ const _productoApitemp=[
     "createat": "2023-02-18T00:00:00.000Z",
     "updateat": "2023-02-27T00:00:00.000Z",
     "marca": "Generico ",
-    "url_foto": "https://www.example.com/foto1.jpg",
+    "url_foto": "https://rogonsa.com.mx/wp-content/uploads/2021/02/castillo_armex.png",
     "activo": "si",
     "paginaweb": null
 },
@@ -185,7 +185,7 @@ const _productoApitemp=[
     "createat": "2023-02-19T00:00:00.000Z",
     "updateat": "2023-02-27T00:00:00.000Z",
     "marca": "Generico ",
-    "url_foto": null,
+    "url_foto": "https://rogonsa.com.mx/wp-content/uploads/2021/02/castillo_armex.png",
     "activo": "si",
     "paginaweb": null
 }
@@ -354,4 +354,4 @@ description:"Cemento con fraguado rapido",
 
 ]
 
-export {_products};
+export {_products,_productoApitemp};

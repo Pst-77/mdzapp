@@ -1,116 +1,132 @@
+
 .ttpage{
-    justify-content:center;
-    float: right;
-    width: 79%;
-    position: relative;
-    
-  } 
-  .darray{
-      display: flex;
+  justify-content:center;
+  float: right;
+  width: 79%;
+  position: relative;
   
+} 
+.darray{
+    display: flex;
+
+}
+
+
+  .dvmian{
+    width: '800px';
+    height:70px;
+    background: rgba(0, 128, 0, 0);
+  }
+  .Carmediapg{
+    
+        float: left ;
+        background: rgb(255, 255, 255);
+        width: '70px';
+        height:70px; 
+    
+  }
+
+  
+
+  .container-nm-precio{
+    text-align:center;
+    background-color: #FFF3E0;
+    overflow: hidden;
   }
   
-  .MuiCardMedia-media{
-      object-fit: contain !important;
-    
-    
-    }
-    
-    .dvmian{
-      width: '800px';
-      height:70px;
-      background: rgba(0, 128, 0, 0);
-    }
-    .Carmediapg{
-      
-          float: left ;
-          background: rgb(255, 255, 255);
-          width: '70px';
-          height:70px; 
-      
-    }
+
+  .nm-producto{
+        width:47vh;
+        height:5vh;
   
-    .container-nm-precio{
-      text-align:center;
-      background-color: #FFF3E0;
-      overflow: hidden;
-    }
-    
-  
-    .nm-producto{
-          width:47vh;
-          height:5vh;
-    
-          float:left;
-          font-family:Helvetica;
-          font-style:normal;
-          font-size:1.8vh;
-          text-align: left;
-          font-weight:bold;
-          
-    }
-  
-    .prc-producto{
-      width:15vh;
-      height:5vh;
-  
-      float: left;
-      display:inline-block;
-      font-family:Helvetica;
-      font-style:normal;
-          font-size:1.8vh;
-          text-align: left;
-          font-weight:bold;
-    }
-  
-    .count-producto{
-      width:15vh;
-      height:5vh;
-  
-      float:left;
-      font-family:Helvetica;
-      font-style:normal;
-      font-size:1.8vh;
-      font-weight:bold;
-    
-    }
-  
-    .tt-producto{
-      width:15vh;
-      height:5vh;
-  
-      float:left;
-      font-style:normal;
-      font-weight:bold;
-      font-family:Helvetica !important;
-      font-size:1.8vh;
-      
-    }
-    .ic-delete{
-      width:5vh;
-      height:5vh;
-  
-      float:right;
-      font-style:normal;
-      font-weight:bold;
-      font-family:Helvetica !important;
-      font-size:1.8vh;
-      cursor:pointer;
-    }
-  
-    .btn-cnt-prd{
-      float:right;
-      position: relative;
-      top: -5vh; 
-      right: 8vh;   
-    }
-    .opc-clnt-cmp{
-        display:flex;
-        justify-content: center;
-        align-items: center;
+        float:left;
+        font-family:Helvetica;
+        font-style:normal;
+        font-size:1.8vh;
+        text-align: left;
+        font-weight:bold;
         
-        height: 40%;
-        width: 100%;
-        
-    }
+  }
+
+  .prc-producto{
+    width:15vh;
+    height:5vh;
+
+    float: left;
+    display:inline-block;
+    font-family:Helvetica;
+    font-style:normal;
+        font-size:1.8vh;
+        text-align: left;
+        font-weight:bold;
+  }
+
+  .count-producto{
+    width:15vh;
+    height:5vh;
+
+    float:left;
+    font-family:Helvetica;
+    font-style:normal;
+    font-size:1.8vh;
+    font-weight:bold;
+  
+  }
+
+  .tt-producto{
+    width:15vh;
+    height:5vh;
+
+    float:left;
+    font-style:normal;
+    font-weight:bold;
+    font-family:Helvetica !important;
+    font-size:1.8vh;
     
+  }
+  .ic-delete{
+    width:5vh;
+    height:5vh;
+
+    float:right;
+    font-style:normal;
+    font-weight:bold;
+    font-family:Helvetica !important;
+    font-size:1.8vh;
+    cursor:pointer;
+  }
+
+  .btn-cnt-prd{
+    float:right;
+    position: relative;
+    top: -5vh; 
+    right: 8vh;   
+  }
+  .opc-clnt-cmp{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      
+      height: 40%;
+      width: 100%;
+      
+  }
+
+  .imgprd-fluid:hover {
+    transition: 3.5s;
+  }
+  .div-dt-prd-izp{
+  justify-content:center;
+  float: left;
+  width: 50%;
+  position: relative;
+  padding-left: 15%;
+
+  }
+  .div-dt-prd-der{
+    justify-content:center;
+    float: right;
+    width: 40%;
+    position: relative;
+      
+  }

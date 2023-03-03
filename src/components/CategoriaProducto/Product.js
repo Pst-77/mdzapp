@@ -33,7 +33,7 @@ const ExpandMore = styled((props) => {
 
 
 
-export default function GProducto({ pproduct: { id, name, productType, image, price, rating } }) {
+export default function GProducto({ pproduct: { id, producto, descripcion, marca, url_foto, precioventa } }) {
   const [expanded, setExpanded] = React.useState(false);
   // const classes=stilos();
   //const { name, price, rating, image, description } = pproduct;
@@ -55,7 +55,7 @@ export default function GProducto({ pproduct: { id, name, productType, image, pr
             className='price'
             variant='h5'
             color='textSecondary'>
-            {accounting.formatMoney(price, "$")}
+            {accounting.formatMoney(precioventa, "$")}
           </Typography>
         }
 
@@ -63,38 +63,22 @@ export default function GProducto({ pproduct: { id, name, productType, image, pr
       <Typography
 
         className='nn' variant='h6'>
-        &#160; {name}<br></br>
+        &#160; {descripcion}<br></br>
         &#160;"In stock"
 
       </Typography>
       <CardMedia
         component="img"
         height="370"
-        image={image}
+        image={url_foto}
         alt="Cemento"
 
 
       />
       <CardContent variant='body2' color='textSecondary'>
-        {productType}
+        {marca}
       </CardContent>
-      <CardActions disableSpacing>
-
-        {Array(rating)
-          .fill()
-          .map((_, i) => (<p key={'ar' + i}>&#11088;</p>
-          ))}
-
-
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
+  
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
 

@@ -18,7 +18,7 @@ export default function CheckoutTable({productoSeleccionado, cantidadProducto, P
              //13
 
 //  const classes=useStyles();
-  const { name, price, image} = productoSeleccionado;
+  const { descripcion, precioventa, url_foto} = productoSeleccionado;
                                         //entra 14
   function actualizarCantidadCarrito(cantidad){
     
@@ -52,11 +52,11 @@ export default function CheckoutTable({productoSeleccionado, cantidadProducto, P
         <TableBody>
          
             <TableRow  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th" scope="row"><img className='Carmediapg' src={image}/>             </TableCell>
-              <TableCell align="center">{name}</TableCell>
-              <TableCell align="center">{accounting.formatMoney (price, "$")}</TableCell>
+              <TableCell component="th" scope="row"><img className='Carmediapg' src={url_foto}/>             </TableCell>
+              <TableCell align="center">{descripcion}</TableCell>
+              <TableCell align="center">{accounting.formatMoney (precioventa, "$")}</TableCell>
               <TableCell align="center"><ItemCount   cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={actualizarCantidadCarrito} /></TableCell>
-              <TableCell align="center">{accounting.formatMoney (price * cantidadProducto, "$")}</TableCell>
+              <TableCell align="center">{accounting.formatMoney (precioventa * cantidadProducto, "$")}</TableCell>
             </TableRow>
       </TableBody>
       </Table>

@@ -1,11 +1,9 @@
-
 import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Product from './Product';
-import {_products} from './product-data';
-
-
+import {_productoApitemp} from './product-data';
+import { addToBasket } from '../../tool/tool';
 
 const responsive = {
   superLargeDesktop: {
@@ -28,35 +26,28 @@ const responsive = {
 };
 
 
-
 export default function CaruselProducto(props) {
-  function addToBasket(detalleProducto){
-    const validaProductoLista=[...props.countElemento]
-    let prdEncontrado=validaProductoLista.find(indexprd=>indexprd.productoSeleccionado===detalleProducto.productoSeleccionado)
-    if (!!prdEncontrado){
-    prdEncontrado.cantidadSeleccionada+=detalleProducto.cantidadSeleccionada
-//    validaProductoLista[prdEncontrado]=prdEncontrado
-    }
-    else{
-      validaProductoLista.push(detalleProducto)
-    }
-    props.setcountElemento(validaProductoLista)
+  function addToBasketBridge(detalleProducto){
+  addToBasket(detalleProducto, props.countElemento, props.setcountElemento);
+    
   }
 
-const product = _products.map((item) => ( 
+const product = _productoApitemp.map((item) => ( 
   <Product  item={item}
     key={item.id + 'prt'}
-    numElementoHandler={addToBasket} setoProducto={props.setoProducto}
+    numElementoHandler={addToBasketBridge} setoProducto={props.setoProducto}
     
     //description={item.description}
   />
 ));
   return (
-    <div >
+    <div className='container-crsl-prd'>
       <h1>&#160;&#160;Nuestros Productos</h1>
+      <br></br>
       <Carousel responsive={responsive}>
       {product}
       </Carousel>
+      <br></br>
     </div>
   );
 } 

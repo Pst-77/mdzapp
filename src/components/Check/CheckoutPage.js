@@ -46,7 +46,7 @@ useEffect(() => {
     let newSumacantidad = 0;
     
     props.countElemento.forEach(i => {
-        newSubtotal += i.cantidadSeleccionada * i.productoSeleccionado.price;
+        newSubtotal += i.cantidadSeleccionada * i.productoSeleccionado.precioventa;
         newSumacantidad += i.cantidadSeleccionada;
     });
 

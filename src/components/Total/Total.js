@@ -9,11 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-//import {withStyles } from '@mui/material';
 import './Total.css'
 import { v4 as uuidv4 } from 'uuid';
 
-const uuid = uuidv4(); 
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -27,9 +26,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
       borderBottom: 'none',
-      width: '100%',
-      
-     
+      width: '100%',     
     },
   }));
 
@@ -46,6 +43,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       borderBottom: 'none',
     },
   }));
+
+  const uuid = uuidv4(); 
 
 
 const Total = (props)=>{
