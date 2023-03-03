@@ -25,6 +25,11 @@ export default function ListMenu({nomMenu, nomSubMenu}) {
     setOpen(false);
   };
 
+  const handleMouseLeave = (event) => {
+    setOpen(false);
+  };
+
+
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
       event.preventDefault();
@@ -55,11 +60,16 @@ export default function ListMenu({nomMenu, nomSubMenu}) {
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
-          style={{borderWidth:'5px', borderStyle:'solid'}}
+          style={{borderWidth: '1px', 
+          borderStyle: 'solid', 
+          color: 'white', 
+          borderColor: 'white',
+          backgroundColor: 'transparent'}}
         >
             {nomMenu}
   
         </Button>
+        &nbsp;
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -68,13 +78,15 @@ export default function ListMenu({nomMenu, nomSubMenu}) {
           transition
           disablePortal
           style={{ zIndex: 999 }}
+          onMouseLeave={handleMouseLeave}
+          
         >
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               style={{
                 transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  placement === 'bottom-start' ? 'left top' : 'left bottom',           
               }}
             >
               <Paper >
@@ -85,13 +97,14 @@ export default function ListMenu({nomMenu, nomSubMenu}) {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    {nomSubMenu.map(item=>{return(
+                    {nomSubMenu.map(item=>(
                       
                       <Link key= {`item${item} `} to={`/${nomMenu}/${item}`}>
-                      <MenuItem  onClick={handleClose}>{item}</MenuItem>
+                      <MenuItem  style={{ color: 'blue', '&:hover': {backgroundColor: 'orange', color: 'white'} }} onClick={handleClose}>{item} 
+                      </MenuItem>
                       </Link>
 
-                    )})}
+                    ))}
                     
                   </MenuList>
                 </ClickAwayListener>
