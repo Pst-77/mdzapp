@@ -6,7 +6,6 @@ import { Input } from '@mui/material';
 
 export const ItemCount =(props)=>{
   
-
     const handleIncrement = () => {
       if(props.cantidadSeleccionada >=0){
       props.setcantidadSeleccionada(props.cantidadSeleccionada + 1);
@@ -23,20 +22,19 @@ export const ItemCount =(props)=>{
         event.preventDefault();
       }
     };
-
+   
 
     return(
         <div  className="counter-prd">
             <RemoveIcon onClick={handleDecrement} fontSize="large"  color='primary'   cursor='pointer' />
 
        
-       <input type="text" inputmode="numeric" pattern="\d*" onKeyPress={handleInput} className="inputnum" value={props.cantidadSeleccionada || 0} onChange={(e)=>props.setcantidadSeleccionada(e.target.value)}/>
+       <input type="text"  onKeyPress={handleInput} onPaste={(e) => e.preventDefault()} className="inputnum" value={props.cantidadSeleccionada || 0} onChange={(e)=>props.setcantidadSeleccionada(e.target.value)}/>
         <AddIcon onClick={handleIncrement} fontSize="large" color="primary"  cursor='pointer'/>
                              {/* //se manda a llamara a esta funcion*/}
 
         </div>
     );
 }
-
 
 export default ItemCount; 

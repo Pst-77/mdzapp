@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './CtxApii/StateProvider';
 import reducer, { initialState } from './CtxApii/reducer.js';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
  <StateProvider initialState={initialState} reducer={reducer}>
+  <CookiesProvider>
     <App />
+    </CookiesProvider>
   </StateProvider>
    
   </React.StrictMode>
