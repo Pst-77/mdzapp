@@ -7,18 +7,18 @@ import './CategoriaProducto.css'
 import ListFiltros from '../Diviciones-filtros/filtros';
 import { useParams } from 'react-router-dom';
 import { addToBasket } from '../../tool/tool';
-
+import AlertProduct from '../Alert/Alerts';
 
 
 export default function GridProductos(props) {
   const { Categoria, Subcategoria } = useParams();
   function addToBasketBridge(detalleProducto) {
     addToBasket(detalleProducto, props.countElemento, props.setcountElemento);
-
+    setShowAlert(true);
   }
 
   const productosFiltradosMN = _productoApitemp.filter(i => i.subcategoria === Subcategoria);
-
+  const [showAlert, setShowAlert] = React.useState(false);
   return (
     <div className='container-cgt-prd'>
       <div className='ctg-filtro-prd'>
@@ -42,6 +42,7 @@ export default function GridProductos(props) {
                 ))}
             </Grid>
           </Box>
+          {showAlert && <AlertProduct />}
         </div>
       </div>
     </div>

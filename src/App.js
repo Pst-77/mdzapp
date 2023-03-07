@@ -35,7 +35,7 @@ function App() {
 
 function updatesetCountElemento(nwsetcountElemento){
   setcountElemento(nwsetcountElemento);
-  setcrtCookie('pedido', nwsetcountElemento, { path: '/', expires: new Date(Date.now() + 3600000)});
+  setcrtCookie('pedido', nwsetcountElemento, { path: '/', expires: new Date(Date.now() + 500000)});
   console.log(crtCookie);
   
 }

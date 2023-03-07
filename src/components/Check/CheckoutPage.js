@@ -16,23 +16,19 @@ function FormRow(props)
         let prdEncontrado=validaProductoCarrito.find(indexprd=>indexprd.productoSeleccionado===DetalleProducto.productoSeleccionado)
         prdEncontrado.cantidadSeleccionada=DetalleProducto.cantidadSeleccionada
         props.setcountElemento(validaProductoCarrito)
-       
+  
     }
-
-    //const [{basket}, dispatch]=useStateValue();
-
     return(
-<React.Fragment>
-    {props.lstProducto.map((i)=>{
-      
-
-        return(<Grid item xs={12} sm={8} md={6} lg={10} key={i.productoSeleccionado.id + 'chprd'}>
-            <CheckoutTable ProductosCarrito={actualizaProductosCarritos} productoSeleccionado={i.productoSeleccionado} cantidadProducto={i.cantidadSeleccionada} />
-        </Grid>)
-    }
-    )}
-</React.Fragment>
- );
+            <React.Fragment>
+                {props.lstProducto.map((i)=>{
+                    return(
+                        <Grid item xs={12} sm={8} md={6} lg={10} key={i.productoSeleccionado.id + 'chprd'}>
+                        <CheckoutTable ProductosCarrito={actualizaProductosCarritos} productoSeleccionado={i.productoSeleccionado} cantidadProducto={i.cantidadSeleccionada} />
+                        </Grid>)
+                    }           
+                    )}
+            </React.Fragment>
+        );
 }
 
 export default function CheckoutPage(props) {

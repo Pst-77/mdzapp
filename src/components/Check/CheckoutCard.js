@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useState, useEffect } from 'react'
 
 export default function CheckoutTable({productoSeleccionado, cantidadProducto, ProductosCarrito}) {
@@ -42,21 +43,23 @@ export default function CheckoutTable({productoSeleccionado, cantidadProducto, P
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell align="right" sx={{background:'#D5DBDB',color: '#002652' }}>Imagen</TableCell>
-            <TableCell align="right" sx={{background:'#D5DBDB',color: '#002652' }} >Nombre</TableCell>
-            <TableCell align="right" sx={{background:'#D5DBDB',color: '#002652' }}>Precio</TableCell>
-            <TableCell align="right" sx={{background:'#D5DBDB',color: '#002652' }}>Cantidad</TableCell>
-            <TableCell align="right" sx={{background:'#D5DBDB',color: '#002652' }}>Total</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '10%', fontSize: '110%', fontWeight: 'bold' }}>Imagen</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '30%', fontSize: '110%', fontWeight: 'bold'}} >Nombre</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '10%', fontSize: '110%', fontWeight: 'bold' }}>Precio</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '25%', fontSize: '110%', fontWeight: 'bold' }}>Cantidad</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '10%', fontSize: '110%', fontWeight: 'bold' }}>Total</TableCell>
+            <TableCell align="center" sx={{background:'#D5DBDB',color: '#002652', width: '10%', fontSize: '110%', fontWeight: 'bold' }}>Eliminar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
          
             <TableRow  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row"><img className='Carmediapg' src={url_foto}/>             </TableCell>
-              <TableCell align="center">{descripcion}</TableCell>
-              <TableCell align="center">{accounting.formatMoney (precioventa, "$")}</TableCell>
-              <TableCell align="center"><ItemCount   cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={actualizarCantidadCarrito} /></TableCell>
-              <TableCell align="center">{accounting.formatMoney (precioventa * cantidadProducto, "$")}</TableCell>
+              <TableCell align="center" sx={{color: '#002652', width: '27%', fontSize: '110%', fontWeight: 'bold'}}>{descripcion}</TableCell>
+              <TableCell align="center" sx={{color: '#002652', width: '27%', fontSize: '110%', fontWeight: 'bold'}}>{accounting.formatMoney (precioventa, "$")}</TableCell>
+              <TableCell align="center" sx={{color: '#002652', width: '27%', fontSize: '110%', fontWeight: 'bold'}}><ItemCount   cantidadSeleccionada={cantidadSeleccionada} setcantidadSeleccionada={actualizarCantidadCarrito} /></TableCell>
+              <TableCell align="center" sx={{color: '#002652', width: '27%', fontSize: '110%', fontWeight: 'bold'}}>{accounting.formatMoney (precioventa * cantidadProducto, "$")}</TableCell>
+              <TableCell align="center"><DeleteIcon/></TableCell>
             </TableRow>
       </TableBody>
       </Table>

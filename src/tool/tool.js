@@ -11,6 +11,7 @@ function addToBasket(detalleProducto, countElemento, setcountElemento){
       validaProductoLista.push(detalleProducto)
     }
     setcountElemento(validaProductoLista)
+    
   }
 
 export  {addToBasket}

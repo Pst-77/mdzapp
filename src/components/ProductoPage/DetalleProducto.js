@@ -2,7 +2,6 @@ import './DetalleProducto.css'
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import React, { useState } from "react";
-//import CheckoutCard from './CheckoutCard';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -47,7 +46,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
 export default function DetalleProducto(props) {
   const [cantidadSeleccionada, setcantidadSeleccionada] = useState(0)  
   const [expanded, setExpanded] = React.useState(false);
@@ -58,15 +56,11 @@ export default function DetalleProducto(props) {
       productoSeleccionado: props.oProducto,
     }
     addToBasket(detalleProducto2, props.countElemento, props.setcountElemento);
-
   }
   
-
-
   const { producto } = useParams(); 
   return ( <div>
-    <Grid container spacing={3}>
-            
+    <Grid container spacing={3}>        
             <Grid item xs={12} lg={12}>
               <br></br>
               <br></br>
@@ -96,11 +90,9 @@ export default function DetalleProducto(props) {
         </TableHead>
 
         <TableBody>
-
         <StyledTableRow>
-        <StyledTableCell  scope="row"> Nombre</StyledTableCell>
+        <StyledTableCell  scope="row" > Nombre</StyledTableCell>
               <StyledTableCell scope="row"> <h3>{props.oProducto.descripcion}</h3></StyledTableCell>
-
         </StyledTableRow>
             
         <StyledTableRow>

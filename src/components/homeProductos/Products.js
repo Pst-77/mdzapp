@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Product from './Product';
 import {_productoApitemp} from './product-data';
 import { addToBasket } from '../../tool/tool';
+import AlertProduct from '../Alert/Alerts';
 
 const responsive = {
   superLargeDesktop: {
@@ -27,19 +28,19 @@ const responsive = {
 
 
 export default function CaruselProducto(props) {
+  const [showAlert, setShowAlert] = React.useState(false);
+
   function addToBasketBridge(detalleProducto){
   addToBasket(detalleProducto, props.countElemento, props.setcountElemento);
-    
+     setShowAlert(true);
   }
 
-const product = _productoApitemp.map((item) => ( 
+ const product = _productoApitemp.map((item) => ( 
   <Product  item={item}
     key={item.id + 'prt'}
     numElementoHandler={addToBasketBridge} setoProducto={props.setoProducto}
-    
-    //description={item.description}
   />
-));
+ ));
   return (
     <div className='container-crsl-prd'>
       <h1>&#160;&#160;Nuestros Productos</h1>
@@ -47,6 +48,7 @@ const product = _productoApitemp.map((item) => (
       <Carousel responsive={responsive}>
       {product}
       </Carousel>
+      {showAlert && <AlertProduct />}
       <br></br>
     </div>
   );
