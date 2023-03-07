@@ -3,17 +3,13 @@ import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-//import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import accounting from 'accounting';
-
 import ItemCount from '../ContadorProductos/BtnContador';
-
 import './checkCardStilo.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Table from '@mui/material/Table';
@@ -126,6 +122,7 @@ export default function ProductoIndividual({ pproduct: { id, name, productType, 
                     <ExpandMoreIcon />
                 </ExpandMore>
             </CardActions>
+            
             <Collapse in={expanded} timeout="auto" unmountOnExit>
 
                 <div className='btn-cnt-prd'>

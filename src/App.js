@@ -40,7 +40,7 @@ function App() {
         <Route path='/SignUp' element={<SignUp />}/> 
         <Route path='/Checkout' element={<CheckoutPage countElemento={countElemento} setcountElemento={setcountElemento}/> }/>
         <Route path='/Detalle/:producto' element={<DetalleProducto oProducto={oProducto} countElemento={countElemento} setcountElemento={setcountElemento}/>}/>
-        <Route path='/:Categoria/:Subcategoria' element={<GridProductos/>}/>
+        <Route path='/:Categoria/:Subcategoria' element={<GridProductos countElemento={countElemento} setcountElemento={setcountElemento} setoProducto={setoProducto}/>}/>
         <Route path='/Envios' element={<DatosEnvio/>}/>
         <Route path='/Mapa' element={<Mapa/>}/>
    

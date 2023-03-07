@@ -60,14 +60,15 @@ return (
         <Grid container spacing={3}>
                 
                 <Grid item xs={12}>
-                <Typography aling ='center' gutterBottom variant = 'h4'>
-                  
+                <Typography align  ='center' gutterBottom variant = 'h4'>
+                  <br></br>
                   Carrito de Compras
                   
                 </Typography>
                 </Grid>
                 
                 <Grid item xs={12} sm={6} md={5} lg={8}container spacing={2}>
+                
                 <FormRow   lstProducto={props.countElemento} setcountElemento={props.setcountElemento}/>
                 </Grid>
                 

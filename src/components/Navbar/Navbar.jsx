@@ -35,7 +35,7 @@ function Navbar(props) {
       <nav ref={navref}>
        {categorias.map((itemCategorias, index) => (
           <ul key={index} className="nav">
-           <ListMenu  nomMenu={itemCategorias.categoria} nomSubMenu={itemCategorias.subcategorias.split(',')}/>
+           <ListMenu  nomMenu={itemCategorias.categoria} nomSubMenu={itemCategorias.subcategorias.split(',').sort()}/>
           </ul>
        ))}
         &nbsp;

@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import './Total.css'
 import { v4 as uuidv4 } from 'uuid';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -93,7 +93,7 @@ const Total = (props)=>{
     <br></br>
     <div className='opc-clnt-cmp'>
     <Button variant='contained' color='primary' sx={{width: '25%', height: '50%' }} ><h3>Cotizar</h3></Button>&nbsp;&nbsp;&nbsp;
-    <Button variant='contained' color='primary' sx={{width: '70%', height: '50%' }}  ><h3>Pagar</h3></Button>
+    <Button component={Link} to='/SignIn' variant='contained' color='primary' sx={{width: '70%', height: '50%' }}  ><h3>Pagar</h3></Button>
     </div>
     
     </div>
