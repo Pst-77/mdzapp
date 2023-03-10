@@ -10,10 +10,12 @@ import ListMenu from '../Menu/ListMenu';
 import groupByToMap from "core-js/actual/array/group-by-to-map";
 import { useParams } from 'react-router-dom';
 import BuildCategoria from './BuildCategoria';
+import BotonSesion from '../botonSesion/botonSesion';
 
 function Navbar(props) {
   const navref = useRef();
   const [categorias, setCategorias] = useState([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,9 +42,7 @@ function Navbar(props) {
        ))}
         &nbsp;
         <ul>
-          <Link to="/SignIn">
-            <Button variant='outlined' color="inherit">Login</Button>
-          </Link>
+          <BotonSesion login={props.login} setLogin={props.setLogin}/>
         </ul> 
         <ul>
           <Link to="/Checkout">

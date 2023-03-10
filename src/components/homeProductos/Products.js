@@ -32,7 +32,7 @@ export default function CaruselProducto(props) {
 
   function addToBasketBridge(detalleProducto){
   addToBasket(detalleProducto, props.countElemento, props.setcountElemento);
-     setShowAlert(true);
+     //setShowAlert(true);
   }
 
  const product = _productoApitemp.map((item) => ( 
@@ -48,7 +48,7 @@ export default function CaruselProducto(props) {
       <Carousel responsive={responsive}>
       {product}
       </Carousel>
-      {showAlert && <AlertProduct />}
+ 
       <br></br>
     </div>
   );

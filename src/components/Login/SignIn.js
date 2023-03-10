@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 
 function Copyright(props) {
   return (
@@ -26,17 +29,87 @@ function Copyright(props) {
   );
 }
 
+
+
+async function llamadaApiUsuario(inputUserName, inputPassword) {
+  var respuesta = false;
+  var myHeaders = new Headers();
+  const oUsuario = {
+    "username": inputUserName,
+    "password": inputPassword,
+  }
+  // myHeaders.append("x-access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjc3NDQwNTk2LCJleHAiOjE2Nzc3NDA1OTZ9.BEe8f52SKQcLL7E2ghZIWq22lkv-Gyv79eGkby4GSGs");
+  myHeaders.append("Content-Type", "application/json")
+  var requestOptions = {
+    method: 'POST',
+    body: JSON.stringify(oUsuario),
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  // peticion asincrona (si espera) 
+  var fetchApi = await fetch("https://adamant-reaction-production-44c6.up.railway.app/api/auth/signin", requestOptions)
+    .then(response => response.json())
+    .then(result => result.token)
+    .catch(error => console.log('error', error));
+  
+  return fetchApi;
+}
+
+async function datosApiUsuario(inputUserName, tokenUsuario){
+  var myHeaders = new Headers();
+  
+  myHeaders.append("Content-Type", "application/json")
+  myHeaders.append("x-access-token", tokenUsuario)
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  var fetchApi= await fetch (`https://adamant-reaction-production-44c6.up.railway.app/api/get/usuariosuser/${inputUserName}`, requestOptions)
+  .then(response => response.json())
+  .then(result => result.data)
+  .catch(error => console.log('error', error));
+
+console.log(fetchApi);
+return fetchApi;
+
+}
+
+
+
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({  setLogin }) {
+  var params = new URL(document.location).searchParams
+  var regresar = params.get('regresar')
+  const navegar = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    llamadaApiUsuario(data.get('email'), data.get('password')).then(async (respuesta) =>  {
+      if (!!respuesta) { 
+        
+        let datosUsuario = await datosApiUsuario(data.get('email'), respuesta);
+        datosUsuario.token=respuesta
+        setLogin(datosUsuario)
+        navegar('/' + regresar)
+      }
+      else {
+        alert('credencial invalida')
+      }
+    })
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
   };
+
+
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,6 +139,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+
             />
             <TextField
               margin="normal"
@@ -76,13 +150,14 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              type="submit"
+              type='submit'  //{() => navegar('/' + regresar)}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

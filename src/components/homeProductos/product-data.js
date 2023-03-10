@@ -190,7 +190,7 @@ const _productoApitemp=[
     "paginaweb": null
 },
 {
-  "id": 10,
+  "id": 11,
   "producto": "CMA0202000004",
   "descripcion": "Block 10x20x40 Macizo",
   "peso": 0,
@@ -210,7 +210,7 @@ const _productoApitemp=[
 },
 
 {
-  "id": 10,
+  "id": 12,
   "producto": "426199",
   "descripcion": "Block lizo 12x18x38 Macizo",
   "peso": 0,
@@ -230,7 +230,7 @@ const _productoApitemp=[
 },
 
 {
-  "id": 10,
+  "id": 13,
   "producto": "426199",
   "descripcion": "Block Macizo Pesado 12x20x40",
   "peso": 0,

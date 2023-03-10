@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import CheckoutTable from './CheckoutCard';
 import "./checkCardStilo.css";
 import Total from '../Total/Total';
+import { deleteBasket } from '../../tool/tool';
 
 
 
@@ -18,13 +19,25 @@ function FormRow(props)
         props.setcountElemento(validaProductoCarrito)
   
     }
+
+function deleteBasketBrige(deletePrd){
+deleteBasket(deletePrd, props.lstProducto, props.setcountElemento)
+}
+
+
+
+
     return(
+
             <React.Fragment>
                 {props.lstProducto.map((i)=>{
+
                     return(
+                        !!i?
                         <Grid item xs={12} sm={8} md={6} lg={10} key={i.productoSeleccionado.id + 'chprd'}>
-                        <CheckoutTable ProductosCarrito={actualizaProductosCarritos} productoSeleccionado={i.productoSeleccionado} cantidadProducto={i.cantidadSeleccionada} />
-                        </Grid>)
+                        <CheckoutTable ProductosCarrito={actualizaProductosCarritos} productoSeleccionado={i.productoSeleccionado} cantidadProducto={i.cantidadSeleccionada} deletePrd={deleteBasketBrige}/>
+                        </Grid> : null )
+
                     }           
                     )}
             </React.Fragment>
@@ -42,8 +55,10 @@ useEffect(() => {
     let newSumacantidad = 0;
     
     props.countElemento.forEach(i => {
+        if (!!i){
         newSubtotal += i.cantidadSeleccionada * i.productoSeleccionado.precioventa;
         newSumacantidad += i.cantidadSeleccionada;
+    }
     });
 
     setsubtotal(newSubtotal);

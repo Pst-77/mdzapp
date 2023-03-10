@@ -39,6 +39,8 @@ class Mapa extends React.Component {
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
         map.setCenter(place.geometry.location);
+        console.log(place.geometry.location.lat());
+        console.log(place.geometry.location.lng());
         marker.setPosition(place.geometry.location);
       });
 

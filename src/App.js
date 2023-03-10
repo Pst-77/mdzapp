@@ -9,64 +9,75 @@ import GridProductos from './components/CategoriaProducto/Products';
 import SignIn from './components/Login/SignIn';
 import SignUp from './components/Login/SignUp'
 import DatosEnvio from './components/CarruselPago/DatosEnvio';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import Mapa from './components/Mapa/Mapa';
-import useCookies from 'react-cookie/cjs/useCookies';
-import { Timelapse } from '@mui/icons-material';
+import { useCookies } from 'react-cookie';
+import { Login, Timelapse } from '@mui/icons-material';
+import PDFFile from './components/pdfcotizacion/pdfcotizacion';
+import { TablePaginationActionsUnstyled } from '@mui/base';
+import { Cookies } from 'react-cookie';
 
 
-
-function Home (props){
+function Home(props) {
   return (
-  <div>
-          <Carousel/>
-          <CaruselProducto {...props}/>
-  </div>
+    <div>
+      <Carousel />
+      <CaruselProducto {...props} />
+    </div>
   );
 }
 function App() {
   //variable para manejo de carrito
   const [countElemento, setcountElemento] = useState([]);
-  const [login, setLogin]=useState();
-  const [oProducto, setoProducto]= useState({});
-  const [crtCookie, setcrtCookie, eliminaCookie]= useCookies(['pedido']);
-
-
-function updatesetCountElemento(nwsetcountElemento){
-  setcountElemento(nwsetcountElemento);
-  setcrtCookie('pedido', nwsetcountElemento, { path: '/', expires: new Date(Date.now() + 500000)});
-  console.log(crtCookie);
-  
+  const [login, setLogin] = useState({});
+  const [oProducto, setoProducto] = useState({});
+  const [crtCookie, setcrtCookie, eliminaCookie] = useCookies(['pedido']);
+  const [userCookie, setuserCokie] = useCookies(['sesion']);
+  const [varAux, setvarAux]= useState(false);
+ 
+  function updatesetCountElemento(nwsetcountElemento) {
+    setcountElemento(nwsetcountElemento);
+    setcrtCookie('pedido', nwsetcountElemento, { path: '/', expires: new Date(Date.now() + 600000) });
+    console.log("pedidos-", crtCookie);
+  }
+function cookieUsuario(datosUsuario){
+  setLogin(datosUsuario)
+  setuserCokie('sesion', datosUsuario, { path: '/', expires: new Date(Date.now() + 600000) });
 }
 
+  useEffect(() => {
+    if (!!crtCookie.pedido) {
+      setcountElemento(crtCookie.pedido);
+    }
 
+    if(!!userCookie.sesion){
+      setLogin(userCookie.sesion)
+  
+      console.log("chk", userCookie.sesion)
+      console.log("chk2", login)
+    }          
+    setTimeout(()=>{setvarAux(true)}, 3000)  
+  }, [])
 
-useEffect(() => {
-  if(!!crtCookie.pedido){
-
-    setcountElemento(crtCookie.pedido);
-
+  if (!varAux){
+    return(<div>cargando...</div>)
   }
-
-}, [])
 
 
   return (
     <Router>
-     
-      <Navbar value={countElemento.length}/>
+      <Navbar value={countElemento.length} login={login} setLogin={cookieUsuario}/>
       <Routes>
-        <Route path='/SignIn' element={<SignIn />}/> 
-        <Route path='/SignUp' element={<SignUp />}/> 
-        <Route path='/Checkout' element={<CheckoutPage countElemento={countElemento} setcountElemento={updatesetCountElemento}/> }/>
-        <Route path='/Detalle/:producto' element={<DetalleProducto oProducto={oProducto} countElemento={countElemento} setcountElemento={updatesetCountElemento}/>}/>
-        <Route path='/:Categoria/:Subcategoria' element={<GridProductos countElemento={countElemento} setcountElemento={updatesetCountElemento} setoProducto={setoProducto}/>}/>
-        <Route path='/Envios' element={<DatosEnvio/>}/>
-        <Route path='/Mapa' element={<Mapa/>}/>
-   
-       {/* <Route path='/Tabla' element={<TablaProductosPedido/>}/>*/}
-        <Route path='/' element={<Home setcountElemento={updatesetCountElemento} countElemento={countElemento} setoProducto={setoProducto}/>}/>
+        <Route path='/SignIn' element={<SignIn login={login} setLogin={cookieUsuario}/>} />
+        <Route path='/SignUp' element={<SignUp />} />
+        <Route path='/Checkout' element={<CheckoutPage countElemento={countElemento} setcountElemento={updatesetCountElemento} />} />
+        <Route path='/Detalle/:producto' element={<DetalleProducto oProducto={oProducto} countElemento={countElemento} setcountElemento={updatesetCountElemento} />} />
+        <Route path='/:Categoria/:Subcategoria' element={<GridProductos countElemento={countElemento} setcountElemento={updatesetCountElemento} setoProducto={setoProducto} />} />
+        <Route path='/Envios' element={login.username ? <DatosEnvio/>: <Navigate to='/SignIn?regresar=Envios'/>} />
+        {/*<Route path='/Cotizacion' element={<PDFFile/>} />*/}
+        {/* <Route path='/Tabla' element={<TablaProductosPedido/>}/>*/}
+        <Route path='/' element={<Home setcountElemento={updatesetCountElemento} countElemento={countElemento} setoProducto={setoProducto} />} />
       </Routes>
 
     </Router>
