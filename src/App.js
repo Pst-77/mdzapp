@@ -60,7 +60,7 @@ function cookieUsuario(datosUsuario){
     setTimeout(()=>{setvarAux(true)}, 3000)  
   }, [])
 
-  if (!varAux){
+  if (!!userCookie.sesion && userCookie.sesion!==login){
     return(<div>cargando...</div>)
   }
 

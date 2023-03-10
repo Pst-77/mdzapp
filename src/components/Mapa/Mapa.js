@@ -59,7 +59,7 @@ class Mapa extends React.Component {
           type="text"
           id="place_input"
           placeholder="      Ingresa una ubicación..."
-          style={{height: '5vh', width:'100%', borderRadius:10}}          
+          style={{height: '5vh', width:'100%', borderRadius:10, padding:'3vh'}}          
           className="input"
           ref={this.inputRef}
         />
