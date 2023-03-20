@@ -11,12 +11,8 @@ import SignUp from './components/Login/SignUp'
 import DatosEnvio from './components/CarruselPago/DatosEnvio';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
-import Mapa from './components/Mapa/Mapa';
 import { useCookies } from 'react-cookie';
-import { Login, Timelapse } from '@mui/icons-material';
-import PDFFile from './components/pdfcotizacion/pdfcotizacion';
-import { TablePaginationActionsUnstyled } from '@mui/base';
-import { Cookies } from 'react-cookie';
+
 
 
 function Home(props) {
@@ -57,10 +53,10 @@ function cookieUsuario(datosUsuario){
       console.log("chk", userCookie.sesion)
       console.log("chk2", login)
     }          
-    setTimeout(()=>{setvarAux(true)}, 3000)  
+    setTimeout(()=>{setvarAux(true)}, 2000)  
   }, [])
 
-  if (!!userCookie.sesion && userCookie.sesion!==login){
+  if (!varAux){
     return(<div>cargando...</div>)
   }
 
@@ -74,7 +70,7 @@ function cookieUsuario(datosUsuario){
         <Route path='/Checkout' element={<CheckoutPage countElemento={countElemento} setcountElemento={updatesetCountElemento} />} />
         <Route path='/Detalle/:producto' element={<DetalleProducto oProducto={oProducto} countElemento={countElemento} setcountElemento={updatesetCountElemento} />} />
         <Route path='/:Categoria/:Subcategoria' element={<GridProductos countElemento={countElemento} setcountElemento={updatesetCountElemento} setoProducto={setoProducto} />} />
-        <Route path='/Envios' element={login.username ? <DatosEnvio/>: <Navigate to='/SignIn?regresar=Envios'/>} />
+        <Route path='/Envios' element={login.username ? <DatosEnvio login={login}/>: <Navigate to='/SignIn?regresar=/Envios'/>} />
         {/*<Route path='/Cotizacion' element={<PDFFile/>} />*/}
         {/* <Route path='/Tabla' element={<TablaProductosPedido/>}/>*/}
         <Route path='/' element={<Home setcountElemento={updatesetCountElemento} countElemento={countElemento} setoProducto={setoProducto} />} />

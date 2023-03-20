@@ -29,8 +29,6 @@ function Copyright(props) {
   );
 }
 
-
-
 async function llamadaApiUsuario(inputUserName, inputPassword) {
   var respuesta = false;
   var myHeaders = new Headers();
@@ -95,7 +93,7 @@ export default function SignIn({  setLogin }) {
         let datosUsuario = await datosApiUsuario(data.get('email'), respuesta);
         datosUsuario.token=respuesta
         setLogin(datosUsuario)
-        navegar('/' + regresar)
+        navegar(regresar)
       }
       else {
         alert('credencial invalida')

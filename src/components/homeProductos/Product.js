@@ -38,21 +38,25 @@ export default function Product(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  
   };
 
   const handleMouseOver = () => {
     setExpanded(true);
+
   }
 
   const handleMouseOut = () => {
     setExpanded(false);
+ 
+   
   }
   const handlerDetalleProducto=()=>{
     props.setoProducto(props.item)
   }
 
   return (
-    <Card sx={{ maxWidth: 400}} onMouseOver={handleMouseOver}
+    <Card sx={{ maxWidth: 400}} onMouseLeave={()=>setcantidadSeleccionada(0)} onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}>
       <CardHeader
         action={
@@ -77,7 +81,7 @@ export default function Product(props) {
           height="300"
           image={props.item.url_foto}
           alt="Cemento"
-          onMouseOver={handleMouseOver}
+       
           onClick={handlerDetalleProducto}
         />
       </Link>

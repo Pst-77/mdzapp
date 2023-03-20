@@ -25,18 +25,64 @@ function Copyright(props) {
     </Typography>
   );
 }
+async function RegistrarUsuario({email, password, confirmarcontrasena, username}) {
+  var myHeaders = new Headers();
+  const oUsuario = {
+    "username": username,
+    "contrasena":password,
+    "confirmarcontrasena":confirmarcontrasena,
+    "correo":email
+  }
+  // myHeaders.append("x-access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjc3NDQwNTk2LCJleHAiOjE2Nzc3NDA1OTZ9.BEe8f52SKQcLL7E2ghZIWq22lkv-Gyv79eGkby4GSGs");
+  myHeaders.append("Content-Type", "application/json")
+  var requestOptions = {
+    method: 'POST',
+    body: JSON.stringify(oUsuario),
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  // peticion asincrona (si espera) 
+  var fetchApi = await fetch("https://adamant-reaction-production-44c6.up.railway.app/api/auth/signupcliente", requestOptions)
+    .then(response=> response.status)
+    .catch(error => console.log('error', error));
+  return fetchApi;
+}
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+const handleSubmit = (event, setStatus) => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const ousuario={
+    email: data.get('email'),
+    password: data.get('password'),
+    confirmarcontrasena:data.get('valida-pw'),
+    nombre: data.get('firstName'),
+    apellidos: data.get('lastName'),
+    username:data.get('email'),
   };
+
+  RegistrarUsuario(ousuario).then(respuesta=>{
+    if (respuesta ===201){
+      setStatus("usuario creado")
+    }
+    if (respuesta===404)
+    {
+      setStatus("el correo ya existe")
+
+    }
+    if (respuesta===400){
+      setStatus("verifique su contraseña")
+    }
+  } 
+  );
+};
+
+
+export default function SignUp() {
+  const [status, setStatus] = React.useState('');
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,9 +100,10 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+        Registro de Usuario
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          
+          <Box component="form" noValidate onSubmit={(event)=>handleSubmit(event, setStatus)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -101,10 +148,20 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                <TextField
+                  required
+                  fullWidth
+                  name="valida-pw"
+                  label="Confirmar Password"
+                  type="password"
+                  id="valida-pw"
+                  autoComplete="new-password"
                 />
+              </Grid>
+              <Grid item xs={12}>
+              <Typography>
+              {status}
+              </Typography>
               </Grid>
             </Grid>
             <Button

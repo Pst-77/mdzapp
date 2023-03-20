@@ -1,94 +1,76 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './DatosEnvio.css'
 import Mapa from '../Mapa/Mapa';
-import { green } from '@mui/material/colors';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 
-class DatosEnvio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { lat: '', lng: '' };
-  }
-  updateLatLong = (lat, lng) => {
-    this.setState({ lat: lat, lng: lng });
-  }
-  render() {
-    const { lat, lng } = this.state;
-    const AddressForm = () => {
-      return (
-        <div className='container-addr-nvio-prd'>
-          <div className='div-fm-der'>
-            <TableContainer component={Paper}>
-              <Table sx={{ maxWidth: '90%', '& td': { borderColor: 'red' } }} aria-label="simple table">
+import { useState } from 'react';
 
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="center">Datos de contacto</TableCell>
-                  </TableRow>
-                </TableHead>
+function DatosEnvio(props) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
 
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <TextField required id="firstName" name="firstName" label="Nombres(s)" fullWidth
-                        autoComplete="given-name" variant="standard" />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <TextField required id="lastName" name="lastName" label="Apellido(s)" fullWidth
-                        autoComplete="family-name" variant="standard" />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <TextField required id="phone" name="phone" type="phone" label="Telefono" fullWidth
-                        autoComplete="family-name" variant="standard" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <TextField required id="lat" name="lat" label="Latitud" fullWidth autoComplete="family-name" variant="standard"
-                        value={this.state.lat} />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <TextField required id="alt" name="alt" label="Altitud" fullWidth autoComplete="family-name"
-                        variant="standard" value={this.state.alt} />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>
-                     <Button className='btn-ps-pg' variant="outlined">Guardar</Button> 
-                     </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table> 
-               </TableContainer>   </div>
-          <div className='div-fm-izq'>
-            <div className='mapa'> <Mapa /> </div> </div> </div>
-      );
+  function handleNameChange(event) {
+    const { value } = event.target;
+    const valid = /^[A-Za-z\s]*$/.test(value);
+    if (valid || value === "") {
+      setName(value);
     }
-
-    return (
-      <div>
-        <AddressForm />
-      </div>
-    );
   }
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Add code here to handle form submission
+  }
+
+  
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <br></br>
+          <br></br>
+          <h1 align="center" style={{ fontSize: "4vh" }}>Datos de contacto</h1>
+          <br></br>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '90vw', maxWidth: '599px' }}>
+            <TextField required id="name" label="Nombre Completo" name="name" type="text"
+              style={{ height: '6.2vh', width: '100%', backgroundColor: 'white', borderRadius: 10 }}
+              value={name}
+              onChange={handleNameChange}
+              inputProps={{ maxLength: 50, pattern: "^[A-Za-z\\s]+$", title: "Solo se permiten letras"}}
+            />
+            <br></br>
+
+            {/*Hebreos11.*/}
+            <TextField required id="phone" label="Telefono de Contacto" name="phone" type="tel"
+              style={{ height: '6.2vh', width: '100%', backgroundColor: 'white', borderRadius: 10 }}
+              value={phone}
+              onChange={handlePhoneChange}
+              inputProps={{ maxLength: 10 }}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
+            />
+            <br></br>
+            <div style={{ width: '100%', minWidth: '500px' }}>
+              <Mapa name={name} phone={phone}/>
+              <br></br>
+            </div>
+           
+
+
+
+
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 }
 export default DatosEnvio;
